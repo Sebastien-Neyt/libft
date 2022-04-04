@@ -14,7 +14,7 @@ memmove
 //tolower
 //strchr
 //strrchr
-strncmp
+//strncmp
 memchr
 memcmp
 strnstr
