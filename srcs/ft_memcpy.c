@@ -1,47 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 15:56:57 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 09:59:34 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 10:29:41 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 10:40:52 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strnstr(char *haystack, char *needle, size_t len)
+void	*ft_memcpy(void *dest, void *src, size_t n)
 {
 	size_t	i;
-	size_t	x;
 
-	if (needle[0] == 0)
-		return (haystack);
+	if (dest == 0 || src == 0)
+		return (dest);
 	i = 0;
-	while (haystack[i] != '\0')
+	while (i < n)
 	{
-		x = 0;
-		while (haystack[i + x] == needle[x] && i + x < len)
-		{
-			x++;
-			if (needle[x] == '\0')
-				return ((char *)(haystack + i));
-		}
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
-	return (0);
+	return (dest);
 }
 /*
-#include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 int	main(void)
 {
-	char part1[] = "this is the haystack";
-	char part2[] = "the";
-	char *pt;
+	short int s1[] = {1, 2 };
+	int s2[] = {3, 4 };
+	printf("%d / %d\n", s1[0], s1[1]);
+	printf("%d / %d\n", s2[0], s2[1]);
+	memcpy(s1, s2, 2* sizeof(short int));
+	printf("%d / %d\n", s1[0], s1[1]);
+	printf("%d / %d\n", s2[0], s2[1]);
 
-	pt = ft_strnstr(part1, part2, 15);
-	printf("%s\n", pt);
 }*/

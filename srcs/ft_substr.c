@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 15:56:57 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 09:59:34 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 13:35:28 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 13:48:13 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strnstr(char *haystack, char *needle, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	x;
+	char			*ans;
+	unsigned int	i;
 
-	if (needle[0] == 0)
-		return (haystack);
+	ans = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ans)
+		return (0);
 	i = 0;
-	while (haystack[i] != '\0')
+	while (i < len && s[start + i])
 	{
-		x = 0;
-		while (haystack[i + x] == needle[x] && i + x < len)
-		{
-			x++;
-			if (needle[x] == '\0')
-				return ((char *)(haystack + i));
-		}
+		ans[i] = s[start + i];
 		i++;
 	}
-	return (0);
+	ans[i] = '\0';
+	return (ans);
 }
 /*
-#include <ctype.h>
-#include <stdio.h>
 int	main(void)
 {
-	char part1[] = "this is the haystack";
-	char part2[] = "the";
-	char *pt;
-
-	pt = ft_strnstr(part1, part2, 15);
-	printf("%s\n", pt);
+	char str[] = "test string";
+	char *test;
+	test = ft_substr(str, 5, 3);
+	printf("%s\n", test);
 }*/

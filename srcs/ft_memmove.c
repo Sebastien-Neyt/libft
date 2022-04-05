@@ -1,47 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 15:56:57 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 09:59:34 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 11:13:21 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 11:56:43 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strnstr(char *haystack, char *needle, size_t len)
+void	*ft_memmove(void *dst, void *src, size_t len)
 {
-	size_t	i;
-	size_t	x;
+	unsigned char	*unsdst;
+	unsigned char	*unssrc;
+	unsigned char	buf[len];
 
-	if (needle[0] == 0)
-		return (haystack);
-	i = 0;
-	while (haystack[i] != '\0')
-	{
-		x = 0;
-		while (haystack[i + x] == needle[x] && i + x < len)
-		{
-			x++;
-			if (needle[x] == '\0')
-				return ((char *)(haystack + i));
-		}
-		i++;
-	}
-	return (0);
+	if (!dst || !src)
+		return (0);
+	unsdst = (unsigned char *)dst;
+	unssrc = (unsigned char *)src;
+	ft_memcpy(buf, unssrc, len);
+	ft_memcpy(unsdst, buf, len);
+	return (dst);
 }
 /*
-#include <ctype.h>
 #include <stdio.h>
+#include <string.h>
 int	main(void)
 {
-	char part1[] = "this is the haystack";
-	char part2[] = "the";
-	char *pt;
-
-	pt = ft_strnstr(part1, part2, 15);
-	printf("%s\n", pt);
+	char p[] = "test string";
+	char x[] = "also test string";
+	ft_memmove(p, x, 4);
+	printf("%s\n", p);
 }*/

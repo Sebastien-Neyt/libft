@@ -1,47 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 15:56:57 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 09:59:34 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 12:31:51 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 12:38:04 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strnstr(char *haystack, char *needle, size_t len)
+char	*ft_strdup(char *s1)
 {
-	size_t	i;
-	size_t	x;
+	size_t	len;
+	char	*dupe;
+	int		i;
 
-	if (needle[0] == 0)
-		return (haystack);
 	i = 0;
-	while (haystack[i] != '\0')
+	len = ft_strlen(s1);
+	dupe = (char *)malloc((len + 1) * sizeof(char));
+	if (!dupe)
+		return (0);
+	while (i < len)
 	{
-		x = 0;
-		while (haystack[i + x] == needle[x] && i + x < len)
-		{
-			x++;
-			if (needle[x] == '\0')
-				return ((char *)(haystack + i));
-		}
+		dupe[i] = s1[i];
 		i++;
 	}
-	return (0);
+	dupe[i] = '\0';
+	return (dupe);
 }
 /*
-#include <ctype.h>
-#include <stdio.h>
 int	main(void)
 {
-	char part1[] = "this is the haystack";
-	char part2[] = "the";
-	char *pt;
+	char str[] = "this is the one we have to dupe";
+	char *ans;
 
-	pt = ft_strnstr(part1, part2, 15);
-	printf("%s\n", pt);
+	ans = ft_strdup(str);
+	printf("%s\n", ans);
 }*/

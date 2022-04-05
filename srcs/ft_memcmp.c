@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 15:56:57 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 09:59:34 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 10:05:41 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 10:27:27 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strnstr(char *haystack, char *needle, size_t len)
+int	ft_memcmp(const void *ptr1, const void *ptr2, size_t a)
 {
-	size_t	i;
-	size_t	x;
+	unsigned char	*temp1;
+	unsigned char	*temp2;
+	unsigned int	i;
 
-	if (needle[0] == 0)
-		return (haystack);
+	temp1 = (unsigned char *)ptr1;
+	temp2 = (unsigned char *)ptr2;
 	i = 0;
-	while (haystack[i] != '\0')
+	while (i < a)
 	{
-		x = 0;
-		while (haystack[i + x] == needle[x] && i + x < len)
-		{
-			x++;
-			if (needle[x] == '\0')
-				return ((char *)(haystack + i));
-		}
+		if (temp1[i] != temp2[i])
+			return (temp1[i] - temp2[i]);
 		i++;
 	}
 	return (0);
 }
 /*
-#include <ctype.h>
+#include <string.h>
 #include <stdio.h>
-int	main(void)
+int main(void)
 {
-	char part1[] = "this is the haystack";
-	char part2[] = "the";
-	char *pt;
-
-	pt = ft_strnstr(part1, part2, 15);
-	printf("%s\n", pt);
+	char a[] = "te\200xt";
+	unsigned char b[] = "test";
+	printf("%d\n", memcmp(a, b, 4 * sizeof(unsigned char)));
+	printf("%d\n", ft_memcmp(a, b, 4));
 }*/
