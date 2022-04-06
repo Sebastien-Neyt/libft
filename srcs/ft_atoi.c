@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:01:28 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 12:18:11 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/05 16:59:54 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	ft_atoi(char *str)
 	while (ft_isdigit(*str))
 	{
 		result = (result * 10) + (*str - '0');
-		if ((result * sign) > INT_MAX)
+		if ((result * sign) > 2147483647)
 			return (-1);
-		if ((result * sign) < INT_MIN)
+		if ((result * sign) < -2147483648)
 			return (0);
 		str++;
 	}

@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 14:44:43 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 17:00:07 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 16:09:53 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 16:20:54 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strchr(char *p, int ch)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	char	*ans;
+	size_t	i;
 	size_t	len;
 
-	len = 0;
-	while (p && *(p + len))
+	i = 0;
+	len = ft_strlen((char *)s);
+	ans = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ans)
+		return (0);
+	while (i < len)
 	{
-		if (*(p + len) == (char)(ch))
-			return ((char *)(p + len));
-		len++;
+		ans[i] = f(i, s[i]);
+		i++;
 	}
-	if (p && (char)ch == 0)
-		return ((char *)(p + len));
-	return (0);
+	ans[i] = '\0';
+	return (ans);
 }
 /*
-#include <stdio.h>
+char	ft_addingone(unsigned int a, char b)
+{
+	return(b + a);
+}
+
 int	main(void)
 {
-	char s[] = "this is a &testsr&ing";
-	printf("%s\n", ft_strchr(s, '\0'));
+	char s[] = "gggg";
+	printf("%s\n", ft_strmapi(s, &ft_addingone));
 }*/

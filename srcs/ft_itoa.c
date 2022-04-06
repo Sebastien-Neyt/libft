@@ -6,13 +6,13 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:11:04 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 16:08:03 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/05 16:59:48 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_countdigits(int n)
+static int	ft_countdigits(int n)
 {
 	int	count;
 
@@ -32,7 +32,7 @@ int	ft_countdigits(int n)
 	return (count);
 }
 
-char	*ansbuilder(unsigned int nbr, char *ans, int len)
+static char	*ansbuilder(unsigned int nbr, char *ans, int len)
 {
 	ans[len] = '\0';
 	while (--len >= 0)
@@ -53,7 +53,7 @@ char	*ft_itoa(int n)
 	neg = 0;
 	len = ft_countdigits(n);
 	nbr = n;
-	if (n == INT_MIN)
+	if (n == -2147483648)
 		return (ft_strdup("-2147483468"));
 	ans = (char *)malloc(sizeof(char) * (len + 1));
 	if (n < 0)

@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 14:44:43 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 17:00:07 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 16:22:35 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 17:00:23 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strchr(char *p, int ch)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	len;
+	unsigned int	i;
 
-	len = 0;
-	while (p && *(p + len))
+	if (!s || !f)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		if (*(p + len) == (char)(ch))
-			return ((char *)(p + len));
-		len++;
+		f(i, &s[i]);
+		i++;
 	}
-	if (p && (char)ch == 0)
-		return ((char *)(p + len));
-	return (0);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char s[] = "this is a &testsr&ing";
-	printf("%s\n", ft_strchr(s, '\0'));
-}*/

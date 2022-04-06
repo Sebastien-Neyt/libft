@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 14:44:43 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 17:00:07 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/05 16:30:05 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/05 16:33:57 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strchr(char *p, int ch)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	len;
-
-	len = 0;
-	while (p && *(p + len))
-	{
-		if (*(p + len) == (char)(ch))
-			return ((char *)(p + len));
-		len++;
-	}
-	if (p && (char)ch == 0)
-		return ((char *)(p + len));
-	return (0);
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
 }
 /*
-#include <stdio.h>
 int	main(void)
 {
-	char s[] = "this is a &testsr&ing";
-	printf("%s\n", ft_strchr(s, '\0'));
+	int fd = 0;
+	char a = 'b';
+	ft_putchar_fd(a, fd);
 }*/

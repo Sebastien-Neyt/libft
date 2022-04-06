@@ -6,13 +6,13 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:07:26 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/05 14:34:26 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/05 17:01:48 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_char_present(char *str, char c)
+static int	ft_char_present(char *str, char c)
 {
 	int	status;
 
@@ -26,7 +26,7 @@ int	ft_char_present(char *str, char c)
 	return (status);
 }
 
-int	ft_countingsetchars(char *str, char *set)
+static int	ft_countingsetchars(char *str, char *set)
 {
 	int	count;
 	int	i;
