@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 14:56:05 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 14:00:27 by sneyt            ###   ########.fr       */
+/*   Created: 2022/04/06 14:30:58 by sneyt             #+#    #+#             */
+/*   Updated: 2022/04/06 15:29:19 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(char const *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*ans;
+	t_list	*tmp;
 
-	i = ft_strlen(s);
-	while (i >= 0)
+	if (!lst || !f || !del)
+		return (0);
+	while (lst)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i--;
+		tmp = ft_lstnew(lst->content);
+		if (!tmp)
+		{
+			ft_lstclear(&lst, del);
+			return (0);
+		}
+		ft_lstadd_back(&ans, tmp);
+		lst = lst->next;
 	}
-	return (0);
+	return (ans);
 }
