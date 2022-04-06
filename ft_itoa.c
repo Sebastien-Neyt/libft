@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:11:04 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 10:08:16 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/06 13:18:03 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ char	*ft_itoa(int n)
 	neg = 0;
 	len = ft_countdigits(n);
 	nbr = n;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483468"));
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
 	ans = (char *)malloc(sizeof(char) * (len + 1));
 	if (n < 0)
 	{
@@ -71,6 +71,6 @@ char	*ft_itoa(int n)
 /*
 int	main(void)
 {
-	int	i = -147483647;
+	int	i = -2147483648;
 	printf("%s\n", ft_itoa(i));
 }*/

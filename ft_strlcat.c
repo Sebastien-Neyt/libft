@@ -6,13 +6,13 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 13:48:12 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 10:39:37 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/06 12:18:54 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, char const *src, size_t dstsize)
 {
 	size_t	destlen;
 	size_t	count;

@@ -6,13 +6,13 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 12:33:48 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 10:08:54 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/06 12:16:16 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t maxlen)
+size_t	ft_strlcpy(char *dst, char const *src, size_t maxlen)
 {
 	size_t	srclen;
 	size_t	count;

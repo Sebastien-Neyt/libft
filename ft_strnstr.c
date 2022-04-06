@@ -6,19 +6,19 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 15:56:57 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 10:09:03 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/06 12:22:16 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(char *haystack, char *needle, size_t len)
+char	*ft_strnstr(char const *haystack, char const *needle, size_t len)
 {
 	size_t	i;
 	size_t	x;
 
 	if (needle[0] == 0)
-		return (haystack);
+		return ((char *)haystack);
 	i = 0;
 	while (haystack[i] != '\0')
 	{

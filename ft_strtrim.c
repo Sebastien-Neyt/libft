@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:07:26 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 10:09:07 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/06 12:58:37 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ans = (char *)malloc(sizeof(char) * (len - amount));
 	if (!ans)
 		return (0);
-	while (j < len - amount)
+	while (i < len - amount)
 	{
 		if (!ft_char_present((char *)set, s1[j]))
 		{
@@ -79,8 +79,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int	main(void)
 {
-	char test[] = "lets is see is if see this is works";
-	char sep[] = "is ";
+	char test[] = "   xxxtripouille";
+	char sep[] = " x";
 	char *ans;
 
 	ans = ft_strtrim(test, sep);
