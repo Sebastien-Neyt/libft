@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:07:26 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 12:58:37 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/06 15:43:17 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int	main(void)
 {
-	char test[] = "   xxxtripouille";
-	char sep[] = " x";
+	char test[] = " \t   \n\n      \t\t hello \n work\n  ";
+	char sep[] = "\t\n ";
 	char *ans;
 
 	ans = ft_strtrim(test, sep);
