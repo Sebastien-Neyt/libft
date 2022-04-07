@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:30:58 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/07 10:35:50 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/07 10:43:55 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&ans, del);
 			return (0);
 		}
-
 		tmp = tmp->next;
 		lst = lst->next;
 	}
