@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:13:21 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 11:29:27 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/07 09:52:00 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	*ft_memmove(void *dst, void *src, size_t len)
 {
 	unsigned char	*unsdst;
 	unsigned char	*unssrc;
-	unsigned char	buf[10000];
+	unsigned char	buf[15000];
 
-	if (!dst || !src)
+	if (dst == NULL || src == NULL)
 		return (0);
 	unsdst = (unsigned char *)dst;
 	unssrc = (unsigned char *)src;

@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 15:12:27 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 12:13:17 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/07 09:49:29 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strncmp(char const *s1, char const *s2, size_t a)
 	size_t	c;
 
 	c = 0;
-	if (!s1 || !s2)
+	if (s1 == NULL || s2 == NULL)
 		return (0);
 	while (c < a && (s1[c] || s2[c]))
 	{

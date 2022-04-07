@@ -6,83 +6,50 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:07:26 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 15:43:17 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/07 10:22:16 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_char_present(char *str, char c)
+static int	ft_ispartofset(char c, const char *set)
 {
-	int	status;
-
-	status = 0;
-	while (*str)
+	while (*set)
 	{
-		if (*str == c)
-			status = 1;
-		str++;
+		if (c == *set)
+			return (1);
+		set++;
 	}
-	return (status);
+	return (0);
 }
 
-static int	ft_countingsetchars(char *str, char *set)
-{
-	int	count;
-	int	i;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		while (*set)
-		{
-			if (str[i] == *set)
-			{
-				count++;
-				break ;
-			}
-			set++;
-		}
-		i++;
-	}
-	return (count);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*ans;
-	int		amount;
-	int		len;
-	int		i;
-	int		j;
+	char	*start;
+	char	*end;
 
-	j = 0;
-	i = 0;
-	len = ft_strlen((char *)s1);
-	amount = ft_countingsetchars((char *)s1, (char *)set);
-	ans = (char *)malloc(sizeof(char) * (len - amount));
-	if (!ans)
+	if (!s1 || !set)
 		return (0);
-	while (i < len - amount)
-	{
-		if (!ft_char_present((char *)set, s1[j]))
-		{
-			ans[i] = s1[j];
-			i++;
-		}
-		j++;
-	}
-	ans[i] = '\0';
+	start = (char *)s1;
+	end = start + ft_strlen(s1);
+	while (*start && ft_ispartofset(*start, set))
+		start++;
+	while (start < end && ft_ispartofset(*(end - 1), set))
+		end--;
+	ans = ft_substr(start, 0, end - start);
 	return (ans);
 }
 /*
 int	main(void)
 {
-	char test[] = " \t   \n\n      \t\t hello \n work\n  ";
-	char sep[] = "\t\n ";
-	char *ans;
-
-	ans = ft_strtrim(test, sep);
-	printf("%s\n", ans);
+	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t 
+   	Please\n Trim me !\n   \n \n \t\t\n  ";
+	char *s2 = "Hello \t  Please\n Trim me !";
+	char *ret = ft_strtrim(s1, " \n\t");
+	printf("%s\n", ret);
+	if (!strcmp(ret, s2))
+		printf("(TEST_SUCCESS)");
+	else
+		printf("(TEST_FAILED)");
 }*/
