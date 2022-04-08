@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 13:25:21 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 14:42:19 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/08 11:08:32 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_strncmp(char const *s1, char const *s2, size_t a);
 size_t	ft_strlen(char const *str);
 size_t	ft_strlcat(char *dst, char const *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, char const *src, size_t maxlen);
-char	*ft_strchr(char *p, int ch);
+char	*ft_strchr(char const *p, int ch);
 char	*ft_strdup(char *s1);
 char	*ft_strrchr(char const *s, int c);
 char	*ft_strnstr(char const *haystack, char const *needle, size_t len);

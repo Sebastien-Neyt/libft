@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:37:56 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/06 10:13:29 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/08 11:29:56 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,20 @@ static size_t	ft_wordcounter(char *s, char c)
 	return (count);
 }
 
-static void	ft_wordmalloc(char *s, char c, size_t amount, char **ans)
+static void	ft_free_all(char **ans)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (ans[i])
+	{
+		free(ans[i]);
+		i++;
+	}
+	free(ans);
+}
+
+static int	ft_wordmalloc(char *s, char c, size_t amount, char **ans)
 {
 	size_t	i;
 	size_t	x;
@@ -67,12 +80,13 @@ static void	ft_wordmalloc(char *s, char c, size_t amount, char **ans)
 				len++;
 			ans[x] = malloc(sizeof(char) * (len + 1));
 			if (!ans[x])
-				return ;
+				return (0);
 			ft_strlcpy(ans[x], (s + i), (len + 1));
 			x++;
 		}
 		i += (1 + len);
 	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -87,7 +101,11 @@ char	**ft_split(char const *s, char c)
 	if (!ans)
 		return (0);
 	ans[amount] = 0;
-	ft_wordmalloc((char *)s, c, amount, ans);
+	if (!ft_wordmalloc((char *)s, c, amount, ans))
+	{
+		ft_free_all(ans);
+		return (0);
+	}	
 	return (ans);
 }
 /*

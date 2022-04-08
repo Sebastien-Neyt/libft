@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:13:21 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/07 09:52:00 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/08 11:32:04 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ void	*ft_memmove(void *dst, void *src, size_t len)
 {
 	unsigned char	*unsdst;
 	unsigned char	*unssrc;
-	unsigned char	buf[15000];
 
-	if (dst == NULL || src == NULL)
-		return (0);
+	if (dst == src)
+		return (dst);
+	if (src > dst)
+	{
+		dst = ft_memcpy(dst, src, len);
+		return (dst);
+	}
 	unsdst = (unsigned char *)dst;
 	unssrc = (unsigned char *)src;
-	ft_memcpy(buf, unssrc, len);
-	ft_memcpy(unsdst, buf, len);
+	while (len-- > 0)
+	{
+		unsdst[len] = unssrc[len];
+	}
 	return (dst);
 }
 /*

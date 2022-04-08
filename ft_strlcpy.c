@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 12:33:48 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/07 10:24:56 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/08 11:17:08 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *dst, char const *src, size_t maxlen)
 	size_t	srclen;
 	size_t	count;
 
-	if (!src || !dst)
-		return (0);
 	srclen = ft_strlen(src);
 	if (maxlen == 0)
 		return (srclen);
