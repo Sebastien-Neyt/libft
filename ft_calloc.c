@@ -6,7 +6,7 @@
 /*   By: sneyt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 12:19:51 by sneyt             #+#    #+#             */
-/*   Updated: 2022/04/08 10:47:10 by sneyt            ###   ########.fr       */
+/*   Updated: 2022/04/20 10:51:06 by sneyt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 void	*ft_calloc(size_t n, size_t size)
 {
 	void	*ans;
-	size_t	n_bytes;
 
-	n_bytes = n * size;
-	if (n_bytes / size != n)
-		return (0);
+	if (!n || !size)
+		return (ft_calloc(1, 1));
 	ans = malloc(n * size);
 	if (!ans)
 		return (0);
